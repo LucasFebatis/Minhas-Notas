@@ -1,29 +1,54 @@
 package com.febatis.minhasnotas
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val fabAddNote : FloatingActionButton = findViewById(R.id.fab_add_note)
 
-        val editText : EditText = findViewById(R.id.editText)
-        val button : Button = findViewById(R.id.button)
-
-
-        button.setOnClickListener {
-            // intent = Uma instância do tipo Intent
-            val intent = Intent(this, ContentActivity::class.java)
-
-            intent.putExtra("message", editText.text.toString())
-
+        fabAddNote.setOnClickListener {
+            val intent = Intent(this, AddNoteActivity::class.java)
             startActivity(intent)
         }
 
+        recoverNotes()
+    }
+
+    private fun recoverNotes() {
+        lifecycleScope.launch {
+
+            val listNotes = mutableListOf<Note>()
+
+            withContext(Dispatchers.IO) {
+                val db = Room.databaseBuilder(
+                    applicationContext,
+                    AppDatabase::class.java, "database-name"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+
+                val noteDao = db.noteDao()
+                listNotes.addAll(noteDao.getAll())
+            }
+
+            withContext(Dispatchers.Main) {
+
+                val notesTextView : TextView = findViewById(R.id.notes_text_view)
+                notesTextView.text = listNotes.joinToString { it.note ?: "<Sem Valor>" }
+
+            }
+        }
     }
 }

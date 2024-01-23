@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Minhas notas</string>
+    <string name="accessible_button_add_note">Botão para adionar uma nota</string>
+    <string name="hint_text_field_add_note">O que deseja anotar hoje?</string>
+    <string name="btn_text_save_note">Salvar nota</string>
 </resources>
