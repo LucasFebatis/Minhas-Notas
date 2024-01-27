@@ -2,9 +2,10 @@ package com.febatis.minhasnotas
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +25,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         recoverNotes()
+
+    }
+
+    private fun setupRecyclerView(dataset: List<Note>) {
+        val customAdapter = CustomAdapter(dataset)
+
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = customAdapter
     }
 
     private fun recoverNotes() {
@@ -45,8 +55,10 @@ class MainActivity : AppCompatActivity() {
 
             withContext(Dispatchers.Main) {
 
-                val notesTextView : TextView = findViewById(R.id.notes_text_view)
-                notesTextView.text = listNotes.joinToString { it.note ?: "<Sem Valor>" }
+                setupRecyclerView(listNotes)
+
+                //val notesTextView : TextView = findViewById(R.id.notes_text_view)
+                //notesTextView.text = listNotes.joinToString { it.note ?: "<Sem Valor>" }
 
             }
         }
