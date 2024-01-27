@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+.idea
+app/release/app-release.aab
+app/src/main/ic_launcher-playstore.png
