@@ -29,7 +29,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(dataset: List<Note>) {
-        val customAdapter = CustomAdapter(dataset)
+        val customAdapter = CustomAdapter(dataset) {
+            val intent = Intent(this, ContentActivity::class.java)
+            intent.putExtra("id", it.uid)
+            intent.putExtra("note", it.note)
+            startActivity(intent)
+        }
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)

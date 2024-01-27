@@ -3,4 +3,5 @@
     <string name="accessible_button_add_note">Botão para adionar uma nota</string>
     <string name="hint_text_field_add_note">O que deseja anotar hoje?</string>
     <string name="btn_text_save_note">Salvar nota</string>
+    <string name="content_title">Minha Nota</string>
 </resources>

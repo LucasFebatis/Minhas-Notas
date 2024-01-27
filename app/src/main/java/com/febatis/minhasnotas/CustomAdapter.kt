@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val dataSet: List<Note>) :
+class CustomAdapter(private val dataSet: List<Note>, private val onItemClick: (Note) -> Unit) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     /**
@@ -38,8 +38,14 @@ class CustomAdapter(private val dataSet: List<Note>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.tvId.text = dataSet[position].uid.toString()
-        viewHolder.tvNote.text = dataSet[position].note
+        val note = dataSet[position]
+
+        viewHolder.tvId.text = note.uid.toString()
+        viewHolder.tvNote.text = note.note
+
+        viewHolder.itemView.setOnClickListener {
+            onItemClick(note)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
