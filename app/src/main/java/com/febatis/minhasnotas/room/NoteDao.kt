@@ -1,4 +1,4 @@
-package com.febatis.minhasnotas
+package com.febatis.minhasnotas.room
 
 import androidx.room.Dao
 import androidx.room.Delete

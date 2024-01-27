@@ -1,10 +1,13 @@
-package com.febatis.minhasnotas
+package com.febatis.minhasnotas.activities
 
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
+import com.febatis.minhasnotas.R
+import com.febatis.minhasnotas.room.AppDatabase
+import com.febatis.minhasnotas.room.Note
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

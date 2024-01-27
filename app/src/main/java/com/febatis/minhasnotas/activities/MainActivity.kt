@@ -1,4 +1,4 @@
-package com.febatis.minhasnotas
+package com.febatis.minhasnotas.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.febatis.minhasnotas.room.AppDatabase
+import com.febatis.minhasnotas.adapters.CustomAdapter
+import com.febatis.minhasnotas.room.Note
+import com.febatis.minhasnotas.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

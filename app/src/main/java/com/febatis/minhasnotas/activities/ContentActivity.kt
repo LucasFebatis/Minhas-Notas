@@ -1,8 +1,9 @@
-package com.febatis.minhasnotas
+package com.febatis.minhasnotas.activities
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.febatis.minhasnotas.R
 
 class ContentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

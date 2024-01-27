@@ -1,10 +1,12 @@
-package com.febatis.minhasnotas
+package com.febatis.minhasnotas.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.febatis.minhasnotas.R
+import com.febatis.minhasnotas.room.Note
 
 class CustomAdapter(private val dataSet: List<Note>, private val onItemClick: (Note) -> Unit) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {

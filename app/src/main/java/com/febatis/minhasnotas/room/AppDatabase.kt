@@ -1,4 +1,4 @@
-package com.febatis.minhasnotas
+package com.febatis.minhasnotas.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
